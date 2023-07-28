@@ -1,6 +1,6 @@
 # HuCenLife: Human-centric Scene Understanding in 3D Large-scale Scenarios.
 
-### [Project Page](coming soon) | [Arxiv](coming) - ICCV 2023
+### [Project Page](coming soon) | [Arxiv](https://arxiv.org/abs/2307.14392) - ICCV 2023
 
 Human-centric scene understanding is significant for real-world applications, but it is extremely challenging due to the existence of diverse human poses and actions, complex human-environment interactions, severe occlusions in crowds, etc. In this paper, we present a **large-scale multi-modal dataset for human-centric scene understanding**, named HuCenLife, which is collected in diverse daily-life scenarios with rich and fine-grained annotations. Our HuCenLife can benefit many 3D perception tasks, such as segmentation, detection, action recognition, etc., and we also provide benchmarks for these tasks to facilitate related research. In addition, we design novel modules for **LiDAR-based segmentation and action recognition**, which are more applicable for large-scale human-centric scenarios and achieve state-of-the-art performance. 
 
