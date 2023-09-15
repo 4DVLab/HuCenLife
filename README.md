@@ -9,11 +9,14 @@ Human-centric scene understanding is significant for real-world applications, bu
 </p>
 
 ## 🚩 News
+
  Human-centric Scene Understanding in 3D Large-scale Scenarios is accepted at ICCV 2023.
 
+## 📚 Dataset Download:
+[Baidu link](https://pan.baidu.com/s/1VeFLPgDR7EAIKPijJxSMXA?pwd=y1zn) with extract code: y1zn .
 
 ## 💻 Train your own models
-1. Prepare the datasets
+1. Prepare the datasets:
 2. Ready to train
    
 ...Coming soon.
