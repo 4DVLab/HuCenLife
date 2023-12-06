@@ -35,9 +35,17 @@ Human-centric scene understanding is significant for real-world applications, bu
 </p>
 
 
-## Citation
- 
-
 ## License
+All datasets are published under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License. This means that you must attribute the work in the manner specified by the authors, you may not use this work for commercial purposes and if you alter, transform, or build upon this work, you may distribute the resulting work only under the same license.
 
-This code is distributed under an [MIT LICENSE](LICENSE).
+## Citation
+ ```
+@inproceedings{xu2023human,
+  title={Human-centric scene understanding for 3d large-scale scenarios},
+  author={Xu, Yiteng and Cong, Peishan and Yao, Yichen and Chen, Runnan and Hou, Yuenan and Zhu, Xinge and He, Xuming and Yu, Jingyi and Ma, Yuexin},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={20349--20359},
+  year={2023}
+}
+ ```
+
