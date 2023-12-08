@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Fusing point cloud and image features to better align visual features with semantic features.">
+  <meta name="keywords" content="zero-shot point cloud segmentation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Human-centric Scene Understanding in 3D Large-scale Scenarios</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <!-- Menu bar, can switch to other work or homepage -->
+
+  <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+
+  <!-- Title, author and some icon(paper, code, video, etc...) -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Human-centric Scene Understanding for 3D Large-scale Scenarios</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                
+                <a href="https://scholar.google.com/citations?user=29Gs2nQAAAAJ&hl=zh-CN&oi=sra">Yiteng Xu</a><sup>*1</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=KAjruhYAAAAJ&hl=zh-CN&oi=sra">Peishan Cong</a><sup>*1</sup>,</span>
+              <span class="author-block">
+                <!-- <a href="https://utkarshsinha.com">Qi Jiang</a><sup>1</sup>,</span> -->
+                Yichen Yao<sup>*1</sup>,</span>
+              <p>
+                <span class="author-block">
+                  <a href="https://scholar.google.com/citations?user=Uq2DuzkAAAAJ&hl=zh-CN">Runnan Chen</a><sup>2</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://cardwing.github.io">Yuenan Hou</a><sup>3</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://xingezhu.me/aboutme.html">Xinge Zhu</a><sup>4</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="http://users.cecs.anu.edu.au/~hexm/">Xuming He</a><sup>1</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="http://www.yu-jingyi.com">Jingyi Yu</a><sup>1</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="http://yuexinma.me">Yuexin Ma</a><sup>1</sup>,
+                </span>
+              </p>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>ShanghaiTech University,</span>
+              <span class="author-block"><sup>2</sup>The University of Hong Kong</span>
+              <p> <span class="author-block"><sup>3</sup>Shanghai AI Laboratory</span>
+                <span class="author-block"><sup>4</sup>The Chinese University of Hong Kong</span>
+              </p>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2307.14392.pdf"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2307.14392" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Video Link. -->
+                <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/4DVLab/HuCenLife"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/4DVLab/HuCenLife"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>Dataset</span>
+                  </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- teaser part -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/teaser.pdf"
+                type="video/mp4">
+      </video> -->
+        <img src="./static/pics/teasor.png" style="display: block; margin: 0 auto; ">
+        <b>Figure 1. The left shows several scenes captured in HuCenLife, which covers diverse human-centric daily-life
+          scenarios. The right demonstrates rich annotations of HuCenLife, which can benefit many tasks for 3D scene
+          understanding .
+          </h2>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Human-centric scene understanding is significant for real-world applications, but it is extremely
+              challenging due to the existence of diverse human poses and ac- tions, complex human-environment
+              interactions, severe oc- clusions in crowds, etc. In this paper, we present a large- scale multi-modal
+              dataset for human-centric scene under- standing, dubbed HuCenLife, which is collected in diverse
+              daily-life scenarios with rich and fine-grained annotations. Our HuCenLife can benefit many 3D perception
+              tasks, such as segmentation, detection, action recognition, etc., and we also provide benchmarks for these
+              tasks to facili- tate related research. In addition, we design novel mod- ules for LiDAR-based
+              segmentation and action recognition, which are more applicable for large-scale human-centric scenarios and
+              achieve state-of-the-art performance.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Method. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          
+          <h2 class="title is-3">Method For Instance Segmentation</h2>
+          <div class="container_imgleft">
+            
+          <img src="./static/pics/seg_pipeline.png" style="width: 350px; height: 250px;">
+          
+          <!-- <img src="./static/pics/seg_vis.png" style="display: block; margin: 0 auto; "> -->
+          <div class="content has-text-justified">
+
+            <p>
+              <b>Figure 3.The architecture of our segmentation method.</b> Especially, the HHOI module extracts the
+              correlation within different persons and the human-object relationships, which can benefit the point-wise
+              and instance-wise classification.
+            </p>
+          </div>
+          </div>
+        </div>
+      </div>
+      <!--/ Method. -->
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Method. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Method For Action Recognition.</h2>
+          <img src="./static/pics/pointMRNet.drawio.png" style="display: block; margin: 0 auto; ">
+          <div class="content has-text-justified">
+            <p>
+              <b>Figure 5. Pipeline of our method for human-centric action recognition.</b> We first utilize 3D detector
+              to obtain a set of bounding boxes of
+              persons. Then, for each person, we extract multi-resolution features and get a hierarchical fusion feature
+              FHF . Next, we leverage the
+              relationship with neighbors to enhance the ego-feature and obtain a comprehensive feature FIE for the
+              final action classification.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Method. -->
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Method. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Dataset.</h2>
+
+<h3 id="title is-3" style="text-align:left;font-size: larger" ><b>Dataset file structure</b></h3>
+<pre style="display: block; border: 1px solid #ccc; border-radius: 4px; text-align:left">
+HCL_Full
+|── 09-23-13-44-53-1
+|   |── bin (LiDAR)
+|   |   |── 1663912046.036171264.bin
+|   |   |── 1663912046.135965440.bin
+|   |   |── ...
+|   |── imu_csv (IMU)
+|   |   |── 1663912046015329873.csv
+|   |   |── 1663912046025090565.csv
+|   |   |── ...
+|   |── img_blur (Camera)
+|       |── cam1
+|       |   |── 1663912046.036171264.jpg
+|       |   |── 1663912046.135965440.jpg
+|       |   |── ...
+|       |── cam2
+|       |── cam6
+|── 09-23-13-44-53-2
+|── ...
+
+</pre>
+
+<h4 id="specification" style="text-align:left"><b>Specification</b></h4>
+<ol style="text-align:left ;margin-left:40px">
+  <li>Point clouds are stored in binary format (bin). Use <code>np.fromfile(file_path, dtype=np.float32).reshape(-1, 5)</code> to load the file. Columns 0-4 represent x, y, z, reflectivity, and timestamp (t) respectively.</li>
+  <li>The image is downsampled to 10Hz and temporally aligned with LiDAR data. After alignment, the image is renamed to correspond to the LiDAR file's name. The original image (32Hz) will be released soon.</li>
+  <li>To preserve high-density IMU data, the IMU data isn't downsampled or aligned.</li>
+</ol>
+<br>
+
+
+<h3 id="Annotation structure" style="text-align:left;font-size: larger" ><b>Annotation structure</b></h3>
+<pre style="display: block; border: 1px solid #ccc; border-radius: 4px; text-align:left">
+09-23-13-44-53-1.json
+{
+  "data": "09-23-13-44-53-1",//corresponding data folder
+  "frames_number": 44,//frame number
+  "frame": [
+    {
+      "frameId": 0,//frame id
+      "timestamp": 1663912047.0359857,//timestamp
+      "pc_name": "09-23-13-44-53-1/bin/1663912047.035985664.bin",//point cloud path
+      "instance_number": 5,//instance number
+      "instance": [
+        {
+          "id": "a5f9185a-5719-4414-9ce5-1ba9316d7050",//unique uuid
+          "number": 1,//globel id
+          "category": "person",//category
+          "action": "moving boxes,walking",//action
+          "pointCount": 358,//number of point
+          "seg_points": [
+                          119855,
+                          119856,
+                          ...
+                          ]//index for points
+          "occlusion": 0,//occlusion level(0-1)
+          "position": {
+            "x": 8.642838478088379,
+            "y": -1.170599341392517,
+            "z": -0.4981747269630432
+          },//bbox position
+          "rotation": 1.1941385296061557,//bbox rotation(Yaw)
+          "boundingbox3d": {
+            "x": 0.7874413728713989,
+            "y": 0.4814544916152954,
+            "z": 1.5814100503921509
+          }//bbox dimensions
+        },
+        {...},
+        ...
+      ]
+    },
+    {...},
+    ...
+  ]
+
+}
+
+</pre>
+
+<h4 id="Annotation structure specification" style="text-align:left"><b>Specification</b></h4>
+<ol style="text-align:left ;margin-left:40px">
+  <li>Annotation files are named correspondingly to the names in the dataset.</li>
+  <li>Note: The 'instance' 'id' only applies to the JSON it originates from.</li>
+</ol>
+<br>
+
+<h3 id="Split file structure" style="text-align:left;font-size: larger" ><b>Split file structure</b></h3>
+<pre style="display: block; border: 1px solid #ccc; border-radius: 4px; text-align:left">
+HCL_split.json
+{
+  "train": [        
+    "10-01-18-42-05-2.json",
+    "10-01-18-55-50-2.json",
+    ...
+  ],
+  "test": [
+    "10-03-16-35-25-1.json",
+    "10-03-16-35-25-2.json",
+    ...
+  ]
+}
+
+</pre>
+
+
+
+        </div>
+      </div>
+      <!--/ Method. -->
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Method. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3"> Instance segmentation results on HuCenLife.</h2>
+          <img src="./static/pics/seg.png" style="display: block; margin: 0 auto; ">
+          <div class="content has-text-justified">
+          </div>
+        </div>
+      </div>
+      <!--/ Method. -->
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Method. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3"> Action Recognition results on HuCenLife.</h2>
+          <img src="./static/pics/action.png" style="display: block; margin: 0 auto; ">
+          <div class="content has-text-justified">
+            <p>
+          
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Method. -->
+    </div>
+  </section>
+
+
+  <!-- show bibtex -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{xu2023human,
+  title={Human-centric Scene Understanding for 3D Large-scale Scenarios},
+  author={Xu, Yiteng and Cong, Peishan and Yao, Yichen and Chen, Runnan and Hou, Yuenan and Zhu, Xinge and He, Xuming and Yu, Jingyi and Ma, Yuexin},
+  journal={arXiv preprint arXiv:2307.14392},
+  year={2023}
+}
+}</code></pre>
+    </div>
+  </section>
+
+
+  <!-- show license -->
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <!-- <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a> -->
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              Website source code based on the <a href="https://nerfies.github.io">Nerfies</a> project page.
+              If you want to reuse their <a href="https://github.com/nerfies/nerfies.github.io">source code</a> , please
+              credit them appropriately.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
