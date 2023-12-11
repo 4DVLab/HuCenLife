@@ -1,0 +1,177 @@
+LV'1''LIFT'{
+lifting things
+lifting a plastic bag
+carrying an umbrella
+lifting a bag
+lifting something
+taking things/exchanging items
+moving planks
+carrying a plastic bag
+taking clothes
+}
+LV'1''CARRY'{
+carrying something
+carrying a bag
+carrying bags
+}
+LV'1''MOVE'{
+moving boxes
+}
+LV'1''PULL_PUSH'{
+pulling a suitcase
+pulling a chair
+pulling a flatcar
+pushing a cart
+pushing a stroller
+pushing a flatcar
+pushing something
+pushing a table
+holding a spring car
+pushing a chair
+}
+LV'1''RIDE_SIT'{
+riding a bicycle
+riding an electric bicycle
+riding a scooter
+rding a tricycle
+riding on the carousel
+sitting in a spring car
+}
+LV'1''RIDE_STAND'{
+riding a two-wheel balance car
+riding a one-wheel balance car
+riding a balance car
+riding an electric skateboard
+riding a skateboard
+standing on a trolley
+}
+LV'1''HUMAN_INTERACTION'{
+hugging
+pulling a baby
+being hold by someone else
+taking a baby
+holding the baby
+Being held by someone else
+carrying a baby
+being carry by someone else
+}
+LV'1''FITNESS'{
+fitness with a twister
+fitness with a elliptical trainer
+fitness with a stepper
+}
+LV'1''ENTERTAINMENT'{
+climbing the swing
+climbing slide
+holding the slide
+sliding
+playing seesaw
+sitting in a cavern
+}
+LV'2''BASKETBALL'{
+playing basketball
+}
+LV'2''BADMINTON'{
+playing badminton
+}
+LV'3''BENDING_OVER'{
+bending over
+}
+LV'3''CROUCHING_SITTING'{
+crouching
+sitting on the ground
+sitting
+crouching or sitting on the ground
+sitting on a trunk
+sitting in a chair
+sitting on the stool
+squatting
+kneeling on the stool
+kneeling
+}
+LV'3''RUNNING'{
+running
+}
+LV'2''ESCALATOR'{
+taking the escalator
+}
+LV'4''WALKING_STANDING'{
+walking
+standing
+leaning
+}
+LV'5''OTHER'{
+standing on the stool
+cabinet interaction
+sitting in the stroller
+unpacking package
+taking a package
+opening the package
+getting out of the car
+getting in the car
+playing cell phone
+steping on the basketball
+operating the printer
+holding an umbrella
+orchestra
+playing with musical instruments-percussion
+fitness with a Taiji kneading
+driving a toy car
+dancing
+communicating
+playing football
+jumping
+climbing
+eating
+taking pictures
+drinking
+making a phone call
+playing cell phone
+clapping
+using telephone
+walking the stair
+opening the door
+closing the door
+opening the car door
+closing the car door
+walking on the staircase
+rest
+bench pressing
+getting into a car
+getting off the car
+sitting on the table
+lying
+playing piano or keyboards
+playing the guitar
+treadmill jogging
+playing table tennis
+doing taekwondo/boxing
+typing
+doing yoga
+playing tennis
+playing volleyball
+fitness with a back stretcher
+holding a baby 
+wiping the blackboard
+writing on the blackboard
+operating a computer
+looking at a computer
+holding the balloons
+wrestling
+shaking hands
+holding hands
+holding the balloon
+taking badminton rackets
+pumping up a balloon
+taking a umbrella
+boxing
+taking papers
+taking a projector
+holding a rostrum
+taking a bottle
+kneeling on the chair
+climbing rockery
+supporting microphone
+carrying a toy wing
+walking a dog
+}

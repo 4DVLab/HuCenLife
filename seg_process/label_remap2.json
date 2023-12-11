@@ -1,0 +1,25 @@
+{
+    "other": 0,
+    "person": 1,
+    "electrocar": 2,
+    "table": 3,
+    "box": 4,
+    "cart": 5,
+    "seesaw": 6,
+    "basketball": 7,
+    "fitness equipment": 8,
+    "cabinet": 9,
+    "baby": 10,
+    "blackboard": 11,
+    "staircase": 12,
+    "children's slide": 13,
+    "small vehicle": 14,
+    "computer": 15,
+    "backpack": 16,
+    "small thing": 17,
+    "chair": 18, 
+    "spring car": 19,
+    "ground": 20
+    }
+    
+    
