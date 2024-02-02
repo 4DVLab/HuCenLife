@@ -36,7 +36,7 @@ anno_files_test = [i  for i in anno_files if i in test_json]
 
 with open('./label_remap2.json') as f:
     label = json.load(f)
-ground_info = np.load('/'.join([path_root,'ground.pkl']),allow_pickle=True)
+ground_info = np.load('/'.join([path_root,'ground_process.pkl']),allow_pickle=True)
 
 count = 0
 if split == 'test':
