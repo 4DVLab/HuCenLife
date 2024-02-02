@@ -100,9 +100,9 @@ for anno_file in tqdm(anno_files_traintest):
         assert pc_new.shape[0] == label_new.shape[0]
         pc_new.tofile(info['pcd'])
         
-        # label_key = '/'.join(fname.split('/')[-3:])
-        # ground_label = ground_info[label_key]
-        # label_new[ground_label] = 20
+        label_key = '/'.join(fname.split('/')[-3:])
+        ground_label = ground_info[label_key]
+        label_new[ground_label] = 20
         label_new.tofile(fname)
         
         pkl_info.append(info)
