@@ -17,10 +17,7 @@ Human-centric scene understanding is significant for real-world applications, bu
 
 ## 💻 Train your own models
 1. Prepare the datasets:
-2. Ready to train
-   
-...Coming soon.
-
+   please refer to **seg_process** for processing the instance segmentation annotation.
 
 
 
